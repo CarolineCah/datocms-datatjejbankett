@@ -15,7 +15,7 @@ import { print } from "graphql";
 const dedupableRequest = cache(
   async <TDocument = unknown>(
     payload: string,
-    revalidate?: number | true
+    revalidate?: number | false
   ): Promise<TDocument> => {
     const response = await fetch("https://graphql.datocms.com/", {
       headers: {
