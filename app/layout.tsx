@@ -1,13 +1,10 @@
-import './globals.css';
-import { Playfair_Display, Poppins } from 'next/font/google';
-import { ActiveLink } from '@/components/ActiveLink';
-import { WhatsappIcon } from '@/components/WhatsappIcon';
-import { NavigationMenu } from '@/components/NavigationMenu';
-import { request } from '@/lib/dato';
-import { CSSProperties } from 'react';
-import type { Metadata } from 'next';
-import { renderMetaTags } from 'react-datocms/seo';
-import { graphql } from '@/gql';
+import "./globals.css";
+import { Playfair_Display, Poppins } from "next/font/google";
+import { NavigationMenu } from "@/components/NavigationMenu";
+import { request } from "@/lib/dato";
+import { CSSProperties } from "react";
+import { renderMetaTags } from "react-datocms/seo";
+import { graphql } from "@/gql";
 
 const query = graphql(/* GraphQL */ `
   query Layout {
@@ -37,17 +34,17 @@ const query = graphql(/* GraphQL */ `
 `);
 
 const playfairDisplay = Playfair_Display({
-  variable: '--font-playfair-display',
-  weight: '700',
-  display: 'swap',
-  subsets: ['latin'],
+  variable: "--font-playfair-display",
+  weight: "700",
+  display: "swap",
+  subsets: ["latin"],
 });
 
 const poppins = Poppins({
-  variable: '--font-poppins',
-  display: 'swap',
-  weight: ['400', '700'],
-  subsets: ['latin'],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["400", "700"],
+  subsets: ["latin"],
 });
 
 function colorToRule(color: { red: number; green: number; blue: number }) {
@@ -69,13 +66,13 @@ export default async function RootLayout({
         style={
           theme
             ? ({
-              '--color-accent': colorToRule(theme.accentColor),
-              '--color-highlight': colorToRule(theme.highlightColor),
-            } as CSSProperties)
+                "--color-accent": colorToRule(theme.accentColor),
+                "--color-highlight": colorToRule(theme.highlightColor),
+              } as CSSProperties)
             : undefined
         }
       >
-        <NavigationMenu phoneNumber={contactPage?.phoneNumber} />
+        <NavigationMenu />
         {children}
       </body>
     </html>
