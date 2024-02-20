@@ -42,16 +42,6 @@ export default async function Home() {
             <StructuredText
               data={contactPage.content.value as StructuredTextDocument}
             />
-            {/* Email Contact */}
-            <p>
-              <a
-                href="mailto:event@datatjej.se"
-                className="text-blue-600 underline"
-              >
-                Email us your feedback about this year's conference
-              </a>
-            </p>
-            {/* Facebook Page Link */}
             <p>
               <a
                 href="https://www.facebook.com/DataTjej"
@@ -64,7 +54,6 @@ export default async function Home() {
         </div>
       </div>
       <div className="mx-7 py-12 lg:mx-0 lg:py-0 lg:flex lg:items-center lg:justify-center">
-        {/* Assuming ContactForm handles submissions through your preferred backend */}
         <ContactForm formId={contactPage.formsparkFormId} />
       </div>
     </main>
