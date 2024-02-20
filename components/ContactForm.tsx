@@ -38,7 +38,7 @@ function Field({
             placeholder={placeholder}
             minRows={3}
             className={`w-full border rounded resize-none border-stone-300 focus:outline-none p-3 focus:ring-2 focus:ring-accent focus:ring-offset-2 ${errors(
-              "border-red-500",
+              "border-red-500"
             )}`}
           />
         ) : (
@@ -47,7 +47,7 @@ function Field({
             name={field()}
             placeholder={placeholder}
             className={`w-full border rounded border-stone-300 focus:outline-none p-3 focus:ring-2 focus:ring-accent focus:ring-offset-2 ${errors(
-              "border-red-500",
+              "border-red-500"
             )}`}
           />
         )}
@@ -61,7 +61,7 @@ function Field({
 
 export function ContactForm({ formId }: { formId: string }) {
   const [state, setState] = useState<"success" | "failure" | undefined>(
-    undefined,
+    undefined
   );
 
   const zo = useZorm("signup", FormSchema, {
@@ -98,12 +98,18 @@ export function ContactForm({ formId }: { formId: string }) {
           </div>
           <div>
             {state === "success" ? (
-              <>
-                I just received the message, and I will reply you as soon as
-                possible!
-              </>
+              <>We just received the message, your feedback is invaluable.</>
             ) : (
-              <>You probably haven&apos;t <a href="https://github.com/datocms/next-minimalistic-photography/tree/main#setup-formspark" className="underline underline-offset-4">setup FormSpark</a> yet?</>
+              <>
+                You probably haven&apos;t{" "}
+                <a
+                  href="https://github.com/datocms/next-minimalistic-photography/tree/main#setup-formspark"
+                  className="underline underline-offset-4"
+                >
+                  setup FormSpark
+                </a>{" "}
+                yet?
+              </>
             )}
           </div>
         </div>
@@ -129,7 +135,7 @@ export function ContactForm({ formId }: { formId: string }) {
         />
         <Field
           label="Your message*"
-          placeholder="Hi there! I would like to..."
+          placeholder="Hi there! I think the conference was..."
           field={zo.fields.message}
           errors={zo.errors.message}
           isTextarea={true}
@@ -140,7 +146,7 @@ export function ContactForm({ formId }: { formId: string }) {
           type="submit"
           className="uppercase tracking-widest block w-full font-bold p-4 bg-accent text-white border-accent-400 rounded-md drop-shadow focus:ring-2 ring-offset-2 ring-accent focus:outline-none hover:opacity-90 active:opacity-70"
         >
-          Send me a message!
+          Send us a message!
         </button>
       </form>
     </div>

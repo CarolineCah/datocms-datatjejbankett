@@ -1,24 +1,24 @@
-import { HorizontalScroller } from '@/components/HorizontalScroller';
-import { Tile } from '@/components/Tile';
-import { UnwrapStructuredText } from '@/components/UnwrapStructuredText';
-import { Photoshoot } from '@/components/Photoshoot';
-import { request } from '@/lib/dato';
-import { toNextMetadata } from 'react-datocms/seo';
+import { HorizontalScroller } from "@/components/HorizontalScroller";
+import { Tile } from "@/components/Tile";
+import { UnwrapStructuredText } from "@/components/UnwrapStructuredText";
+import { Photoshoot } from "@/components/Photoshoot";
+import { request } from "@/lib/dato";
+import { toNextMetadata } from "react-datocms/seo";
 import {
   StructuredText,
   StructuredTextDocument,
-} from 'react-datocms/structured-text';
+} from "react-datocms/structured-text";
 
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
-import query from './page.graphql'
+import query from "./page.graphql";
 
 const getHomepageContent = async () => await request(query);
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { homepage } = await getHomepageContent()
- 
-  return toNextMetadata(homepage?._seoMetaTags || [])
+  const { homepage } = await getHomepageContent();
+
+  return toNextMetadata(homepage?._seoMetaTags || []);
 }
 
 export default async function Home() {
@@ -29,13 +29,13 @@ export default async function Home() {
   } = await getHomepageContent();
 
   return (
-    <main style={{ counterReset: 'photoshoot-counter' }}>
+    <main style={{ counterReset: "photoshoot-counter" }}>
       {/* {renderMetaTags(homepage?._seoMetaTags || [])} */}
       <HorizontalScroller>
         {homepage && (
           <Tile>
             <div className="mx-7 py-12 xl:m-0 xl:w-[60vw] xl:max-w-[900px] xl:flex xl:items-center xl:justify-items-center xl:p-32">
-              <div>
+              <div style={{ marginTop: "100px" }}>
                 <div className="uppercase tracking-widest text-sm mb-12 xl:mb-20">
                   {homepage.title}
                 </div>

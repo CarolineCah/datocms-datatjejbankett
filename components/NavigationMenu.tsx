@@ -1,7 +1,4 @@
-import { generateWhatsAppLink } from '@/lib/whatsapp';
-import Link from 'next/link';
-import { ActiveLink } from './ActiveLink';
-import { WhatsappIcon } from './WhatsappIcon';
+import { ActiveLink } from "./ActiveLink";
 
 function MenuItem({
   href,
@@ -10,9 +7,10 @@ function MenuItem({
   href: string;
   children: React.ReactNode;
 }) {
+  // Mobile-friendly padding and touch target size adjustments
   return (
     <ActiveLink
-      className="p-4 decoration-accent decoration-4 underline-offset-4 hover:underline hover:decoration-accent/25"
+      className="p-4 text-sm sm:text-base decoration-accent decoration-2 underline-offset-4 hover:underline hover:decoration-accent/25"
       activeClassName="underline hover:decoration-accent"
       href={href}
     >
@@ -20,24 +18,16 @@ function MenuItem({
     </ActiveLink>
   );
 }
-
-export function NavigationMenu({ phoneNumber }: {
-  phoneNumber?: string | null
-}) {
+export function NavigationMenu() {
   return (
     <>
-      <div className="h-32 xl:hidden" />
-      <div className="fixed flex z-10 items-center left-0 px-2 xl:px-8 top-10 uppercase font-bold backdrop-brightness-150 text-black bg-white/50">
-        <MenuItem href="/">Home</MenuItem>
-        <MenuItem href="/about">About</MenuItem>
+      <div className="h-16 sm:h-32 hidden xl:block" />{" "}
+      <nav className="fixed z-10 flex items-center left-0 px-2 top-0 w-full uppercase font-bold text-black bg-white shadow-md sm:px-4 sm:top-0">
+        {" "}
+        <MenuItem href="/">Banquet</MenuItem>
+        <MenuItem href="/about">Icebreakers</MenuItem>
         <MenuItem href="/contact">Contact</MenuItem>
-        {
-          phoneNumber &&
-          <Link href={generateWhatsAppLink(phoneNumber)} className="p-4">
-            <WhatsappIcon className="w-[1em]" />
-          </Link>
-        }
-      </div>
+      </nav>
     </>
   );
 }
